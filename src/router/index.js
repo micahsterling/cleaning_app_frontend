@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import PostsIndex from '../views/PostsIndex.vue'
 import PostsShow from '../views/PostsShow.vue'
 import PostsNew from '../views/PostsNew.vue'
+import PostsEdit from '../views/PostsEdit.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/Posts/new',
     name: 'PostsNew',
     component: PostsNew
+  },
+  {
+    path: '/Posts/:id/edit',
+    name: 'PostsEdit',
+    component: PostsEdit
   },
   {
     path: '/Posts/:id',
