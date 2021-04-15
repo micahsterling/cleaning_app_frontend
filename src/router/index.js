@@ -18,37 +18,37 @@ const routes = [
     component: Home
   },
   {
-    path: '/Posts',
+    path: '/posts',
     name: 'PostsIndex',
     component: PostsIndex
   },
   {
-    path: '/Posts/new',
-    name: 'PostsNew',
-    component: PostsNew
-  },
-  {
-    path: '/Signup',
+    path: '/signup',
     name: 'Signup',
     component: Signup
   },
   {
-    path: '/Login',
+    path: '/login',
     name: 'Login',
     component: Login
   },
   {
-    path: '/Logout',
+    path: '/logout',
     name: 'Logout',
     component: Logout
   },
   {
-    path: '/Posts/:id/edit',
+    path: '/posts/new',
+    name: 'PostsNew',
+    component: PostsNew
+  },
+  {
+    path: '/posts/:id/edit',
     name: 'PostsEdit',
     component: PostsEdit
   },
   {
-    path: '/Posts/:id',
+    path: '/posts/:id',
     name: 'PostsShow',
     component: PostsShow
   },
