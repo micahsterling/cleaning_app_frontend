@@ -2,8 +2,17 @@
   <div class="posts">
     <h1>{{ message }}</h1>
     <div v-for="post in posts">
-      {{post.title}}
+     <p v-on:click="postShow">{{post.title}}</p>
       {{post.votes}}
+      <dialog id="post-details">
+      <form method="dialog">
+        <h2>Post content</h2>
+        <p>Title: {{ currentPost.title }}</p>
+        <p>Content: {{ post.content }}</p>
+        <p>Votes: {{ post.votes }}</p>
+        <button>Close</button>
+      </form>
+    </dialog>
     </div>
   </div>
 </template>
@@ -18,6 +27,7 @@ export default {
     return {
       message: "Welcome to Posts!",
       posts: [],
+      currentPost: {},
     };
   },
   created: function () {
@@ -32,6 +42,12 @@ export default {
         console.log(response.data);
         this.posts = response.data;
       });
+    },
+    postShow: function (thePost) {
+      console.log("show");
+      console.log(thePost);
+      this.currentPost = thePost;
+      document.querySelector("#post-details").showModal();
     },
   },
 };

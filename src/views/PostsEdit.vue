@@ -9,11 +9,11 @@
       </ul>
       <div class="form-group">
         <label>Title:</label>
-        <input type="text" class="form-control" v-model="title">
+        <input type="text" class="form-control" v-model="post.title">
       </div>
       <div class="form-group">
-        <label>content:</label> 
-        <input type="text" class="form-control" v-model="content">
+        <label>Content:</label> 
+        <input type="text" class="form-control" v-model="post.content">
       </div>
       <input type="submit" class="btn btn-primary" value="Submit">
       </form>
@@ -31,16 +31,15 @@ export default {
       message: "Welcome to the edit",
       title: "",
       content: "",
+      post: {},
       errors: [],
     };
   },
   created: function () {
     console.log("in created");
     axios.get(`/api/posts/${this.$route.params.id}`).then((response) => {
-      console.log(response.data);
       this.post = response.data;
-      this.title = response.data.title;
-      this.content = response.data.content;
+      console.log(response.data);
     });
   },
   methods: {

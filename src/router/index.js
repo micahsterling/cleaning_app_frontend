@@ -5,6 +5,9 @@ import PostsIndex from '../views/PostsIndex.vue'
 import PostsShow from '../views/PostsShow.vue'
 import PostsNew from '../views/PostsNew.vue'
 import PostsEdit from '../views/PostsEdit.vue'
+import Signup from '../views/Signup.vue'
+import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +26,21 @@ const routes = [
     path: '/Posts/new',
     name: 'PostsNew',
     component: PostsNew
+  },
+  {
+    path: '/Signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/Logout',
+    name: 'Logout',
+    component: Logout
   },
   {
     path: '/Posts/:id/edit',
