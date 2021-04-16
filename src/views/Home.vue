@@ -11,7 +11,7 @@
 export default {
   data: function () {
     return {
-      message: "Welcome Home!",
+      message: "The Home Page!",
     };
   },
   created: function () {},
