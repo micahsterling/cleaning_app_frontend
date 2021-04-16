@@ -2,15 +2,18 @@
   <div class="posts">
     <h1>{{ message }}</h1>
     <div v-for="post in posts">
-     <p v-on:click="postShow">{{post.title}}</p>
-      {{post.votes}}
+     <p v-on:click="postShow(post)">{{post.title}}</p>
+      <p>{{post.votes}}</p>
+      <!-- <p><button v-on:click="postShow(post)">More info</button></p> -->
       <dialog id="post-details">
       <form method="dialog">
         <h2>Post content</h2>
         <p>Title: {{ currentPost.title }}</p>
-        <p>Content: {{ post.content }}</p>
+        <p>Content: {{ currentPost.content }}</p>
         <p>Votes: {{ post.votes }}</p>
         <button>Close</button>
+        <router-link v-bind:to="`/posts/${currentPost.id}`"><button>more</button></router-link>
+
       </form>
     </dialog>
     </div>
