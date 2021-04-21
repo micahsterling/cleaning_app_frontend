@@ -1,6 +1,6 @@
 <template>
-  <div class="posts">
-  <!-- Banner -->
+  <div class="post-index">
+      <!-- Banner -->
     <section id="banner">
       <div class="content">
         <header>
@@ -58,20 +58,21 @@
   <!-- Section -->
     <section>
       <header class="major">
-        <h2>Ipsum sed dolor</h2>
+        <h2>Cleaning Closet</h2>
       </header>
       <div class="posts">
         <article v-for="post in posts">
-          <a href="#" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
+          <a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
           <ul class="actions">
-            <li ><a href="#" class="button">More</a></li>
+            <li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
           </ul>
         </article>
    
       </div>
     </section>
+  
 
     
     <!-- <h1>{{ message }}</h1>
