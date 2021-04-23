@@ -54,85 +54,68 @@
         </article>
       </div>
     </section> -->
-												<!-- Form -->
-													<h3>Make a New Post</h3>
+  <!-- Form -->
+    <h3>Make a New Post</h3>
 
-													<form method="post" action="#" v-on:submit.prevent="submit()">
-                              <ul>
-                                <li class="text-danger" v-for="error in errors" v-bind:key="error">
-                                  {{ error }}
-                                </li>
-                              </ul>
-														<div class="row gtr-uniform">
-															<div class="col-6 col-12-xsmall">
-																<input type="text" name="title" id="title" value="" placeholder="Title" v-model="title"/>
-															</div>
-															<div class="col-6 col-12-xsmall">
-																<input type="text" name="demo-name" id="demo-name" value="" placeholder="Tag" />
-															</div>
-                              <br /> 
-															<!-- Break -->
-															<div class="col-12">
-																<select name="demo-category" id="demo-category">
-																	<option value="">- Category -</option>
-																	<option value="1">Kitchen</option>
-																	<option value="1">Bathroom</option>
-																	<option value="1">Bedroom</option>
-																	<option value="1">Living Room</option>
-																</select>
-															</div>
-															<!-- Break -->
-															<div class="col-4 col-12-small">
-																<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-																<label for="demo-priority-low">Low</label>
-															</div>
-															<div class="col-4 col-12-small">
-																<input type="radio" id="demo-priority-normal" name="demo-priority">
-																<label for="demo-priority-normal">Normal</label>
-															</div>
-															<div class="col-4 col-12-small">
-																<input type="radio" id="demo-priority-high" name="demo-priority">
-																<label for="demo-priority-high">High</label>
-															</div>
-															<!-- Break -->
-															<!-- <div class="col-6 col-12-small">
-																<input type="checkbox" id="demo-copy" name="demo-copy">
-																<label for="demo-copy">Email me a copy</label>
-															</div>
-															<div class="col-6 col-12-small">
-																<input type="checkbox" id="demo-human" name="demo-human" checked>
-																<label for="demo-human">I am a human</label>
-															</div> -->
-															<!-- Break -->
-															<div class="col-12">
-																<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6" v-model="content"></textarea>
-															</div>
-															<!-- Break -->
-															<div class="col-12">
-																<ul class="actions">
-																	<li><input type="submit" value="Save" class="primary" /></li>
-																	<li><input type="reset" value="Reset" /></li>
-																</ul>
-															</div>
-														</div>
-													</form>
-    <!-- <form v-on:submit.prevent="submit()"> 
-    <ul>
-        <li class="text-danger" v-for="error in errors" v-bind:key="error">
-          {{ error }}
-        </li>
-      </ul>
-      <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" v-model="title">
+    <form method="post" action="#" v-on:submit.prevent="submit()">
+        <ul>
+          <li class="text-danger" v-for="error in errors" v-bind:key="error">
+            {{ error }}
+          </li>
+        </ul>
+      <div class="row gtr-uniform">
+        <div class="col-6 col-12-xsmall">
+          <input type="text" name="title" id="title" value="" placeholder="Title" v-model="title"/>
+        </div>
+        <div class="col-6 col-12-xsmall">
+          <input type="text" name="demo-name" id="demo-name" value="" placeholder="Tag" />
+        </div>
+        <br /> 
+        <!-- Break -->
+        <div class="col-12">
+          <select name="demo-category" id="demo-category">
+            <option value="">- Category -</option>
+            <option value="1">Kitchen</option>
+            <option value="1">Bathroom</option>
+            <option value="1">Bedroom</option>
+            <option value="1">Living Room</option>
+          </select>
+        </div>
+        <!-- Break -->
+        <div class="col-4 col-12-small">
+          <input type="radio" id="demo-priority-low" name="demo-priority" checked>
+          <label for="demo-priority-low">Low</label>
+        </div>
+        <div class="col-4 col-12-small">
+          <input type="radio" id="demo-priority-normal" name="demo-priority">
+          <label for="demo-priority-normal">Normal</label>
+        </div>
+        <div class="col-4 col-12-small">
+          <input type="radio" id="demo-priority-high" name="demo-priority">
+          <label for="demo-priority-high">High</label>
+        </div>
+        <!-- Break -->
+        <!-- <div class="col-6 col-12-small">
+          <input type="checkbox" id="demo-copy" name="demo-copy">
+          <label for="demo-copy">Email me a copy</label>
+        </div>
+        <div class="col-6 col-12-small">
+          <input type="checkbox" id="demo-human" name="demo-human" checked>
+          <label for="demo-human">I am a human</label>
+        </div> -->
+        <!-- Break -->
+        <div class="col-12">
+          <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6" v-model="content"></textarea>
+        </div>
+        <!-- Break -->
+        <div class="col-12">
+          <ul class="actions">
+            <li><input type="submit" value="Save" class="primary" /></li>
+            <li><input type="reset" value="Reset" /></li>
+          </ul>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Content:</label>
-        <input type="text" class="form-control" v-model="content">
-      </div>
-      <br />
-      <input type="submit" class="btn btn-primary" value="Submit">
-    </form> -->
+    </form>
   </div>
 </template>
     
