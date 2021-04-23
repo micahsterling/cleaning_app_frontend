@@ -11,12 +11,14 @@
 								<header id="header">
 									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
 									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+										<li v-if="isLoggedIn()"><a href="" class=""><span class="label">{{getUserName()}}</span></a></li>
+										<li v-if="!isLoggedIn()"><a href="/signup" class=""><span class="label">Signup</span></a></li>
+										<li v-if="!isLoggedIn()"><a href="/login" class=""><span class="label">Login</span></a></li>
+										<li v-if="isLoggedIn()"><a href="/logout" class=""><span class="label">Logout</span></a></li>
+										<!-- <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
 									</ul>
+									<!-- <p>Signup</p> -->
 								</header>
 
 
@@ -146,6 +148,11 @@
 
 <script>
 export default {
+  data: function () {
+    return {
+      // user: [],
+    };
+  },
   methods: {
     isLoggedIn: function () {
       console.log("logged in");
@@ -158,6 +165,10 @@ export default {
     getUserId: function () {
       return localStorage.getItem("user_id");
     },
+    getUserName: function () {
+      return localStorage.getItem("name");
+    },
   },
 };
 </script>
+

@@ -3,6 +3,7 @@
     <h1>{{ message }}</h1>
     <div v-if="isLoggedIn()">
       <p>User id: {{getUserId()}}</p>
+      <p>User name: {{getUserName()}}</p>
       <p>{{ posts.title }}</p>
 
   </div>
@@ -33,6 +34,10 @@ export default {
     getUserId: function () {
       return localStorage.getItem("user_id");
     },
+    getUserName: function () {
+      return localStorage.getItem("name");
+    },
+
     postsIndex: function () {
       console.log("posts index");
       // posts web request
