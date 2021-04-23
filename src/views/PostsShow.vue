@@ -5,17 +5,17 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>Hi, I’m Editorial<br />
-											by HTML5 UP</h1>
-											<p>A free and fully responsive site template</p>
+											<h2>{{post.title}}</h2>
+											<!-- <p>A free and fully responsive site template</p> -->
 										</header>
-										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+										<p>{{post.content}}</p>
 										<ul class="actions">
-											<li><a href="#" class="button big">Learn More</a></li>
+											<li><a href="#" class="button big">Edit</a></li>
+											<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
 										</ul>
 									</div>
 									<span class="image object">
-										<img src="images/pic10.jpg" alt="" />
+										<img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
 									</span>
 								</section>
 
@@ -114,11 +114,7 @@
 								</section>
 
 
-    <h1>{{ message }}</h1>
-    <p><b>id:</b> {{post.id}}</p>
-    <p><b>title:</b> {{post.title}}</p>
-    <p><b>content:</b> {{post.content}}</p>
-    <p><b>votes:</b> {{post.votes}}</p>
+   
     <br />
     <!-- <router-link v-bind:to="/posts/${this.$route.params.id}/edit">Edit Posts</router-link> -->
   </div>
@@ -132,7 +128,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "Welcome to the show!",
+      message: "",
       post: {},
     };
   },

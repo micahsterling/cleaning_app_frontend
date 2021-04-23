@@ -43,6 +43,7 @@
 									</header>
 									<ul>
 										<li><a href="/posts">Homepage</a></li>
+										<li><a href="/posts/new">New Post</a></li>
 										<li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
@@ -54,7 +55,6 @@
 												<li><a href="#">Feugiat Veroeros</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Etiam Dolore</a></li>
 										<li><a href="#">Adipiscing</a></li>
 										<li>
 											<span class="opener">Another Submenu</span>

@@ -19,7 +19,7 @@
     </section>
 
   <!-- Section -->
-    <section>
+    <!-- <section>
       <header class="major">
         <h2>Erat lacinia</h2>
       </header>
@@ -53,9 +53,9 @@
           </div>
         </article>
       </div>
-    </section>
-
+    </section> -->
   <!-- Section -->
+
     <section>
       <header class="major">
         <h2>Cleaning Closet</h2>
