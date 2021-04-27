@@ -75,7 +75,7 @@
         <div class="col-12">
           <select name="demo-category" id="demo-category">
             <option value="">- Category -</option>
-            <option value="1">Kitchen</option>
+            <option value="1" v-for="category in categories">Kitchen</option>
             <option value="1">Bathroom</option>
             <option value="1">Bedroom</option>
             <option value="1">Living Room</option>
@@ -132,6 +132,7 @@ export default {
       title: "",
       content: "",
       errors: [],
+      category: [],
     };
   },
   created: function () {

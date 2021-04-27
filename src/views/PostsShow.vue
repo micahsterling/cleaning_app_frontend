@@ -6,11 +6,13 @@
 									<div class="content">
 										<header>
 											<h2>{{post.title}}</h2>
+											<h2>{{category.category}}</h2>
 											<!-- <p>A free and fully responsive site template</p> -->
 										</header>
 										<p>{{post.content}}</p>
+										<p>{{post.category_id}}</p>
 										<ul class="actions">
-											<li><a href="#" class="button big">Edit</a></li>
+											<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
 											<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
 										</ul>
 									</div>
@@ -130,15 +132,20 @@ export default {
     return {
       message: "",
       post: {},
+      category: {},
     };
   },
   created: function () {
-    // get data about an individual recipe from rails
+    // get data about an individual post from rails
     // params[:id]
     // console.log(this.$route.params.id);
     axios.get(`/api/posts/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.post = response.data;
+    });
+    axios.get(`/api/categories/${this.$route.params.id}`).then((response) => {
+      console.log(response.data);
+      this.category = response.data;
     });
   },
   methods: {},

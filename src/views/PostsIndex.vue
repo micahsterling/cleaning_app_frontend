@@ -65,6 +65,7 @@
           <a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
+          <p>Category: {{post.category && post.category.name}}</p>
           <ul class="actions">
             <li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
           </ul>
@@ -72,26 +73,7 @@
    
       </div>
     </section>
-  
 
-    
-    <!-- <h1>{{ message }}</h1>
-    <div v-for="post in posts">
-     <p v-on:click="postShow(post)">{{post.title}}</p>
-      <p>{{post.votes}}</p> -->
-      <!-- <p><button v-on:click="postShow(post)">More info</button></p> -->
-      <!-- <dialog id="post-details">
-      <form method="dialog">
-        <h2>Post content</h2>
-        <p>Title: {{ currentPost.title }}</p>
-        <p>Content: {{ currentPost.content }}</p>
-        <p>Votes: {{ post.votes }}</p>
-        <button>Close</button>
-        <router-link v-bind:to="`/posts/${currentPost.id}`"><button>more</button></router-link>
-
-      </form>
-    </dialog>
-    </div> -->
   </div>
 </template>
 
@@ -105,12 +87,14 @@ export default {
     return {
       message: "Welcome to Posts!",
       posts: [],
+      categories: [],
       currentPost: {},
     };
   },
   created: function () {
     console.log("creating");
     this.postsIndex();
+    this.categoriesIndex();
   },
   methods: {
     postsIndex: function () {
@@ -126,6 +110,14 @@ export default {
       console.log(thePost);
       this.currentPost = thePost;
       document.querySelector("#post-details").showModal();
+    },
+    categoriesIndex: function () {
+      console.log("category index");
+      // posts web request
+      axios.get("/api/categories").then((response) => {
+        console.log(response.data);
+        this.categories = response.data;
+      });
     },
   },
 };
