@@ -12,6 +12,11 @@
         <input type="text" class="form-control" v-model="post.title">
       </div>
       <br />
+      <div class="form-group">
+        <label>id:</label>
+        <input type="text" class="form-control" v-model="post.category_id">
+      </div>
+      <br />
    
        <div class="row gtr-uniform">
 
@@ -21,12 +26,9 @@
         <br /> 
         <!-- Break -->
         <div class="col-12">
-          <select name="demo-category" id="demo-category">
-            <option value="">- Category -</option>
-            <option value="1">Kitchen</option>
-            <option value="1">Bathroom</option>
-            <option value="1">Bedroom</option>
-            <option value="1">Living Room</option>
+            <option  value=""> Category </option>
+          <select v-model="post.category_id" name="demo-category" id="demo-category">
+            <option v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
           </select>
         </div>
         <!-- Break -->
@@ -72,6 +74,7 @@ export default {
       content: "",
       post: {},
       errors: [],
+      categories: [],
     };
   },
   created: function () {
@@ -80,12 +83,18 @@ export default {
       this.post = response.data;
       console.log(response.data);
     });
+    axios.get(`/api/categories/`).then((response) => {
+      console.log("categories");
+      console.log(response.data);
+      this.categories = response.data;
+    });
   },
   methods: {
     submit: function () {
       var params = {
         title: this.post.title,
         content: this.post.content,
+        category_id: this.post.category_id,
       };
       axios
         .patch(`/api/posts/${this.$route.params.id}`, params)

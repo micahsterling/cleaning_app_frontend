@@ -63,7 +63,7 @@
 										<li>
 											<span class="opener " v-on:click="active = !active" v-bind:class="{active: active}">Rooms</span>
 											<ul>
-												<!-- <li><a v-for="category in categories" href="#" >{{category.name}}</a></li> -->
+												<li><option v-for="category in categories" >{{category.name}}</option></li>
 												<li><a href="#" >Kitchen</a></li>
 												<li><a href="#">Living Room</a></li>
 												<li><a href="#">Bedroom</a></li>
@@ -170,6 +170,9 @@ export default {
       inactive: false,
       categories: [],
     };
+  },
+  created: function () {
+    this.categoriesIndex();
   },
   methods: {
     toggle: function () {
