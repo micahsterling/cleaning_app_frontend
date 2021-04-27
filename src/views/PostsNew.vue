@@ -72,13 +72,10 @@
         </div>
         <br /> 
         <!-- Break -->
-        <div class="col-12">
-          <select name="demo-category" id="demo-category">
-            <option value="">- Category -</option>
-            <option value="1" v-for="category in categories">Kitchen</option>
-            <option value="1">Bathroom</option>
-            <option value="1">Bedroom</option>
-            <option value="1">Living Room</option>
+         <div class="col-12">
+            <option  value=""> Category </option>
+          <select v-model="category_id" name="demo-category" id="demo-category">
+            <option v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
           </select>
         </div>
         <!-- Break -->
@@ -131,12 +128,18 @@ export default {
       message: "Make a new Post!",
       title: "",
       content: "",
+      post: {},
       errors: [],
       category: [],
     };
   },
   created: function () {
     console.log("in created...");
+    axios.get(`/api/categories/`).then((response) => {
+      console.log("categories");
+      console.log(response.data);
+      this.categories = response.data;
+    });
   },
   methods: {
     submit: function () {
@@ -144,7 +147,13 @@ export default {
         title: this.title,
         content: this.content,
         votes: this.votes,
+        category_id: this.category_id,
       };
+      axios.get(`/api/categories/`).then((response) => {
+        console.log("categories");
+        console.log(response.data);
+        this.categories = response.data;
+      });
       // make a request to the api
       axios
         .post("/api/posts", params)
