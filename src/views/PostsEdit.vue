@@ -75,6 +75,7 @@ export default {
       post: {},
       errors: [],
       categories: [],
+      tags: [],
     };
   },
   created: function () {

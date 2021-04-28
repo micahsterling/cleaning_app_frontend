@@ -131,6 +131,7 @@ export default {
       post: {},
       errors: [],
       category: [],
+      tag: [],
     };
   },
   created: function () {
@@ -148,6 +149,7 @@ export default {
         content: this.content,
         votes: this.votes,
         category_id: this.category_id,
+        tag_ids: this.tag_ids,
       };
       axios.get(`/api/categories/`).then((response) => {
         console.log("categories");

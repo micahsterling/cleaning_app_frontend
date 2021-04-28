@@ -66,6 +66,7 @@
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
           <p>Category: {{post.category && post.category.name}}</p>
+          <p v-for="tag in post.tags"> Tags: {{tag.name}}</p>
           <ul class="actions">
             <li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
           </ul>
@@ -89,6 +90,7 @@ export default {
       posts: [],
       categories: [],
       currentPost: {},
+      tags: [],
     };
   },
   created: function () {
