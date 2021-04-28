@@ -12,16 +12,21 @@
         <input type="text" class="form-control" v-model="post.title">
       </div>
       <br />
-      <div class="form-group">
-        <label>id:</label>
-        <input type="text" class="form-control" v-model="post.category_id">
-      </div>
-      <br />
    
-       <div class="row gtr-uniform">
-
-        <div class="col-6 col-12-xsmall">
+      <div class="row gtr-uniform">
+         <div class=" pt-3">{{tags}}</div>
+        <div  class="col-6 col-12-xsmall">
+          <v-autocomplete 
+            :items="[1,2,3]"
+            item-text="name"
+            v-model="tags"
+            multiple
+            chips  >
+          </v-autocomplete>
           <input type="text" name="demo-name" id="demo-name" value="" placeholder="Tag" />
+            <select v-model="post.tag_id" name="demo-category" id="demo-category">
+            <option v-for="tag in post.tags" v-bind:value="tag.id">{{tag.name}}</option>
+          </select>
         </div>
         <br /> 
         <!-- Break -->
@@ -57,7 +62,7 @@
           </ul>
         </div>
       </div>
-      </form>
+    </form>
   </div>
 </template>
 
