@@ -92,18 +92,6 @@ export default {
       errors: [],
       categories: [],
       tags: [],
-      sportsData: [
-        "Badminton",
-        "Basketball",
-        "Cricket",
-        "Football",
-        "Golf",
-        "Gymnastics",
-        "Hockey",
-        "Rugby",
-        "Snooker",
-        "Tennis",
-      ],
     };
   },
   created: function () {

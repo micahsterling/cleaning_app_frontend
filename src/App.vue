@@ -61,9 +61,9 @@
 										<li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
-											<span class="opener " v-on:click="active = !active" v-bind:class="{active: active}">Rooms</span>
+											<span class="opener " v-on:click="active = !active" v-bind:class="{active: active}">Categories</span>
 											<ul>
-												<li><option v-for="category in categories" >{{category.name}}</option></li>
+												<!-- <li><option v-for="category in categories" >{{category.name}}</option></li> -->
 												<li><a href="#" >Kitchen</a></li>
 												<li><a href="#">Living Room</a></li>
 												<li><a href="#">Bedroom</a></li>
@@ -169,7 +169,7 @@ export default {
       search: "",
       active: false,
       inactive: false,
-      categories: [],
+      // categories: [],
     };
   },
   created: function () {

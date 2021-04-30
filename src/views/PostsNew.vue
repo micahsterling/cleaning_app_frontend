@@ -63,21 +63,28 @@
             {{ error }}
           </li>
         </ul>
+     <div class="row gtr-uniform">
+        <div class="col-6 col-12-xsmall">
+        <label>Title:</label>
+        <input type="text" class="form-control" v-model="title">
+        </div>
+      </div>
+      <br />
       <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall">
-          <input type="text" name="title" id="title" value="" placeholder="Title" v-model="title"/>
-        </div>
-        <div class="col-6 col-12-xsmall">
-          <input type="text" name="demo-name" id="demo-name" value="" placeholder="Tag" />
+          Tags: 
+          <div class="control_wrapper" >
+            <ejs-multiselect v-model="tag_strings" id='multiselect' :dataSource='tags' placeholder="Add a Tag" ></ejs-multiselect>
+          </div>
         </div>
         <br /> 
         <!-- Break -->
-         <div class="col-12">
-            <option  value=""> Category </option>
-          <select v-model="category_id" name="demo-category" id="demo-category">
-            <option v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
-          </select>
-        </div>
+        <div class="col-12">
+          <option  value=""> Category </option>
+        <select v-model="post.category_id" name="demo-category" id="demo-category">
+          <option v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
+        </select>
+      </div>
         <!-- Break -->
         <div class="col-4 col-12-small">
           <input type="radio" id="demo-priority-low" name="demo-priority" checked>
@@ -130,8 +137,10 @@ export default {
       content: "",
       post: {},
       errors: [],
-      category: [],
-      tag: [],
+      categories: [],
+      tags: [],
+      tagsObjects: [],
+      tag_strings: [],
     };
   },
   created: function () {
@@ -141,6 +150,12 @@ export default {
       console.log(response.data);
       this.categories = response.data;
     });
+    axios.get(`/api/tags/`).then((response) => {
+      console.log("tags");
+      console.log(response.data);
+      this.tagsObjects = response.data;
+      this.tags = response.data.map((tag) => tag.name);
+    });
   },
   methods: {
     submit: function () {
@@ -148,14 +163,12 @@ export default {
         title: this.title,
         content: this.content,
         votes: this.votes,
-        category_id: this.category_id,
-        tag_ids: this.tag_ids,
+        category_id: this.post.category_id,
+        tag_ids: this.tagsObjects.filter(
+          (tag) => this.tag_strings.indexOf(tag.name) >= 0
+        ),
       };
-      axios.get(`/api/categories/`).then((response) => {
-        console.log("categories");
-        console.log(response.data);
-        this.categories = response.data;
-      });
+      console.log(params);
       // make a request to the api
       axios
         .post("/api/posts", params)
