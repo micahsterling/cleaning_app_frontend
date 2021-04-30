@@ -12,21 +12,12 @@
         <input type="text" class="form-control" v-model="post.title">
       </div>
       <br />
-   
       <div class="row gtr-uniform">
-         <div class=" pt-3">{{tags}}</div>
-        <div  class="col-6 col-12-xsmall">
-          <v-autocomplete 
-            :items="[1,2,3]"
-            item-text="name"
-            v-model="tags"
-            multiple
-            chips  >
-          </v-autocomplete>
-          <input type="text" name="demo-name" id="demo-name" value="" placeholder="Tag" />
-            <select v-model="post.tag_id" name="demo-category" id="demo-category">
-            <option v-for="tag in post.tags" v-bind:value="tag.id">{{tag.name}}</option>
-          </select>
+        <div class="col-6 col-12-xsmall">
+          Tags: 
+          <div class="control_wrapper" >
+            <ejs-multiselect  id='multiselect' :dataSource='tags' placeholder="Add a Tag" ></ejs-multiselect>
+          </div>
         </div>
         <br /> 
         <!-- Break -->
@@ -66,12 +57,32 @@
   </div>
 </template>
 
-<style>
-</style>
+
 
 <script>
 import axios from "axios";
+import Vue from "vue";
+import { MultiSelectPlugin } from "@syncfusion/ej2-vue-dropdowns";
+
+Vue.use(MultiSelectPlugin);
 export default {
+  computed: {
+    sortedArray() {
+      let sortedtags = this.tags;
+
+      sortedtags = sortedtags.sort((a, b) => {
+        let fa = a.title.toLowerCase(),
+          fb = b.title.toLowerCase();
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+    },
+  },
   data: function () {
     return {
       message: "Welcome to the edit",
@@ -81,6 +92,18 @@ export default {
       errors: [],
       categories: [],
       tags: [],
+      sportsData: [
+        "Badminton",
+        "Basketball",
+        "Cricket",
+        "Football",
+        "Golf",
+        "Gymnastics",
+        "Hockey",
+        "Rugby",
+        "Snooker",
+        "Tennis",
+      ],
     };
   },
   created: function () {
@@ -93,6 +116,11 @@ export default {
       console.log("categories");
       console.log(response.data);
       this.categories = response.data;
+    });
+    axios.get(`/api/tags/`).then((response) => {
+      console.log("tags");
+      console.log(response.data);
+      this.tags = response.data;
     });
   },
   methods: {
@@ -115,3 +143,10 @@ export default {
   },
 };
 </script>
+
+<style>
+@import "../../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-vue-dropdowns/styles/material.css";
+@import "../../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+</style>
