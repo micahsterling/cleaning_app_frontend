@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import PostsIndex from '../views/PostsIndex.vue'
+import MyPosts from '../views/MyPosts.vue'
 import PostsShow from '../views/PostsShow.vue'
 import PostsNew from '../views/PostsNew.vue'
 import PostsEdit from '../views/PostsEdit.vue'
@@ -21,6 +22,11 @@ const routes = [
     path: '/posts',
     name: 'PostsIndex',
     component: PostsIndex
+  },
+  {
+    path: '/myposts',
+    name: 'MyPosts',
+    component: MyPosts
   },
   {
     path: '/signup',

@@ -9,7 +9,8 @@
 					</header>
 					<p>{{post.content}}</p>
 					<p>Category: {{post.category && post.category.name}}</p>
-					<p v-for="tag in post.tags"> Tags: {{tag.name}}</p>
+					Tags: <a v-for="tag in post.tags">  {{tag.name}},</a>
+					<p></p>
 					<ul class="actions">
 						<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
 						<li><a href="#" class="button big">Votes {{post.votes}}</a></li>

@@ -15,7 +15,7 @@
 									<a href="/posts" class="logo"><strong>Homepage</strong> </a>
 									<a href="index.html" class="logo"><strong>Make it Clean</strong> </a>
 									<a href="index.html" class="logo"><strong>My Collection</strong> </a>
-									<a href="index.html" class="logo"><strong>My Posts</strong> </a>
+									<a href="/myposts" class="logo"><strong>My Posts</strong> </a>
 									
 								
 								
