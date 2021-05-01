@@ -11,10 +11,20 @@
 					<p>Category: {{post.category && post.category.name}}</p>
 					Tags: <a v-for="tag in post.tags">  {{tag.name}},</a>
 					<p></p>
-					<ul class="actions">
+					<p>post.user_id: {{ post.user_id }}</p>
+					 <p>$parent.getUserId(): {{ $parent.getUserId() }}</p>
+					 <ul class="actions">
+    <div v-if="post.user_id == $parent.getUserId()">
+      <li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
+      <li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Delete </a></li>
+      <br />
+      <!-- <button v-on:click="deletepost()">Delete the post</button> -->
+    </div>
+					</ul>
+					 <ul class="actions"> 
 						<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
 						<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
-					</ul>
+						</ul>
 				</div>
 				<span class="image object">
 					<img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />

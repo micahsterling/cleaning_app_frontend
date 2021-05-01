@@ -56,6 +56,7 @@
     </section> -->
   <!-- Form -->
     <h3>Make a New Post</h3>
+       <p>User id: {{getUserId()}}</p>
 
     <form method="post" action="#" v-on:submit.prevent="submit()">
         <ul>
@@ -66,8 +67,12 @@
      <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall">
         <label>Title:</label>
-        <input type="text" class="form-control" v-model="title">
+        <input type="text" class="form-control" v-model="title" >
         </div>
+        <!-- <div class="col-6 col-12-xsmall">
+        <label>user_id:</label>
+        <input type="text" class="form-control" v-model="" >
+        </div> -->
       </div>
       <br />
       <div class="row gtr-uniform">
@@ -86,7 +91,7 @@
         </select>
       </div>
         <!-- Break -->
-        <div class="col-4 col-12-small">
+        <!-- <div class="col-4 col-12-small">
           <input type="radio" id="demo-priority-low" name="demo-priority" checked>
           <label for="demo-priority-low">Low</label>
         </div>
@@ -97,7 +102,7 @@
         <div class="col-4 col-12-small">
           <input type="radio" id="demo-priority-high" name="demo-priority">
           <label for="demo-priority-high">High</label>
-        </div>
+        </div> -->
         <!-- Break -->
         <!-- <div class="col-6 col-12-small">
           <input type="checkbox" id="demo-copy" name="demo-copy">
@@ -179,6 +184,9 @@ export default {
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
+    },
+    getUserId: function () {
+      return localStorage.getItem("user_id");
     },
   },
 };
