@@ -9,9 +9,9 @@
           <p>A place for all your cleaning info</p>
         </header>
         <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-        <ul class="actions">
+        <!-- <ul class="actions">
           <li><a href="#" class="button big">Learn More</a></li>
-        </ul>
+        </ul> -->
       </div>
       <span class="image object">
         <img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />

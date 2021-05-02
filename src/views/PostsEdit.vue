@@ -16,7 +16,7 @@
         <div class="col-6 col-12-xsmall">
           Tags: 
           <div class="control_wrapper" >
-            <ejs-multiselect  id='multiselect' :dataSource='tags' placeholder="Add a Tag" ></ejs-multiselect>
+            <ejs-multiselect v-model="tag_strings" id='multiselect' :dataSource='tags' placeholder="Add a Tag" ></ejs-multiselect>
           </div>
         </div>
         <br /> 
@@ -48,7 +48,7 @@
         <!-- Break -->
         <div class="col-12">
           <ul class="actions">
-            <li><input type="submit" value="Save" class="primary" /></li>
+            <li><input href='/myposts' type="submit" value="Save" class="primary" /></li>
             <li><input type="reset" value="Reset" /></li>
           </ul>
         </div>
@@ -66,23 +66,6 @@ import { MultiSelectPlugin } from "@syncfusion/ej2-vue-dropdowns";
 
 Vue.use(MultiSelectPlugin);
 export default {
-  computed: {
-    sortedArray() {
-      let sortedtags = this.tags;
-
-      sortedtags = sortedtags.sort((a, b) => {
-        let fa = a.title.toLowerCase(),
-          fb = b.title.toLowerCase();
-        if (fa < fb) {
-          return -1;
-        }
-        if (fa > fb) {
-          return 1;
-        }
-        return 0;
-      });
-    },
-  },
   data: function () {
     return {
       message: "Welcome to the edit",
@@ -122,7 +105,7 @@ export default {
         .patch(`/api/posts/${this.$route.params.id}`, params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/posts");
+          this.$router.push("/myposts");
         })
         .catch((error) => {
           this.errors = errors.response.data.errors;

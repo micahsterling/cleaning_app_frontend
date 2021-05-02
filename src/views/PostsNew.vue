@@ -56,7 +56,6 @@
     </section> -->
   <!-- Form -->
     <h3>Make a New Post</h3>
-       <p>User id: {{getUserId()}}</p>
 
     <form method="post" action="#" v-on:submit.prevent="submit()">
         <ul>
@@ -69,10 +68,6 @@
         <label>Title:</label>
         <input type="text" class="form-control" v-model="title" >
         </div>
-        <!-- <div class="col-6 col-12-xsmall">
-        <label>user_id:</label>
-        <input type="text" class="form-control" v-model="" >
-        </div> -->
       </div>
       <br />
       <div class="row gtr-uniform">
@@ -179,7 +174,7 @@ export default {
         .post("/api/posts", params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/posts");
+          this.$router.push("/myposts");
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

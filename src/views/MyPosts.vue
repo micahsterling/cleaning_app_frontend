@@ -4,13 +4,13 @@
     <section id="banner">
       <div class="content">
         <header>
-          <h1>Cleaning app<br />
+          <h1>My Posts<br />
           </h1>
-          <p>A place for all your cleaning info</p>
+          <p>A place for all your posts</p>
         </header>
         <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
         <ul class="actions">
-          <li><a href="#" class="button big">Learn More</a></li>
+          <li><a href="#" class="button big">More</a></li>
         </ul>
       </div>
       <span class="image object">
@@ -61,16 +61,18 @@
         <h2>Cleaning Closet</h2>
       </header>
       <div class="posts">
-        <article v-for="post in posts">
+        <article v-if="post.user_id == $parent.getUserId()" v-for="post in posts">
           <a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
           <h3>{{post.title}}</h3>
+          <p>post.user_id: {{ post.user_id }}</p>
+					 <p>$parent.getUserId(): {{ $parent.getUserId() }}</p>
           <p>{{post.content}}</p>
           <p>Category: {{post.category && post.category.name}}</p>
             Tags: <a v-for="tag in post.tags"> {{tag.name}},</a>
             
           <p></p>
           <ul class="actions">
-            <li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
+            <li ><a v-bind:href="`/posts/${post.id}/edit`" class="button">Edit</a></li>
           </ul>
         </article>
       </div>

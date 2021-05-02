@@ -13,18 +13,19 @@
 					<p></p>
 					<p>post.user_id: {{ post.user_id }}</p>
 					 <p>$parent.getUserId(): {{ $parent.getUserId() }}</p>
-					 <ul class="actions">
-    <div v-if="post.user_id == $parent.getUserId()">
-      <li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
-      <li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Delete </a></li>
-      <br />
-      <!-- <button v-on:click="deletepost()">Delete the post</button> -->
-    </div>
-					</ul>
-					 <ul class="actions"> 
-						<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
-						<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
+					<div v-if="post.user_id == $parent.getUserId()">
+						<ul class="actions">
+							<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
+							<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Delete </a></li>
+							<br />
+							<!-- <button v-on:click="deletepost()">Delete the post</button> -->
 						</ul>
+					</div>
+					<div v-if="post.user_id != $parent.getUserId()">
+					<ul class="actions"> 
+						<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
+					</ul>
+					</div>
 				</div>
 				<span class="image object">
 					<img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
@@ -32,7 +33,7 @@
 			</section>
 
 		<!-- Section -->
-			<section>
+			<!-- <section>
 				<header class="major">
 					<h2>Erat lacinia</h2>
 				</header>
@@ -66,63 +67,27 @@
 						</div>
 					</article>
 				</div>
-			</section>
+			</section> -->
 
 		<!-- Section -->
 			<section>
 				<header class="major">
-					<h2>Ipsum sed dolor</h2>
+					<h2>Similar Posts</h2>
 				</header>
 				<div class="posts">
-					<article>
-						<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-						<h3>Interdum aenean</h3>
-						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+						<article v-for="post in filterBy(posts, post.category.name, 'category')">
+						<a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
+						<h3>{{post.title}}</h3>
+						<p>{{post.content}}</p>
+						<p>Category: {{post.category && post.category.name}}</p>
+							Tags: <a v-for="tag in post.tags"> {{tag.name}},</a>
+							
+						<p></p>
 						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
+							<li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
 						</ul>
 					</article>
-					<article>
-						<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-						<h3>Nulla amet dolore</h3>
-						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
-						</ul>
-					</article>
-					<article>
-						<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-						<h3>Tempus ullamcorper</h3>
-						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
-						</ul>
-					</article>
-					<article>
-						<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-						<h3>Sed etiam facilis</h3>
-						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
-						</ul>
-					</article>
-					<article>
-						<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-						<h3>Feugiat lorem aenean</h3>
-						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
-						</ul>
-					</article>
-					<article>
-						<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-						<h3>Amet varius aliquam</h3>
-						<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-						<ul class="actions">
-							<li><a href="#" class="button">More</a></li>
-						</ul>
-					</article>
-				</div>
+      	</div>
 			</section>
    
     <br />
@@ -134,13 +99,17 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       message: "",
       post: {},
       category: [],
       tags: [],
+      posts: [],
+      searchTerm: "",
     };
   },
   created: function () {
@@ -155,7 +124,17 @@ export default {
       console.log(response.data);
       this.category = response.data;
     });
+    this.postsIndex();
   },
-  methods: {},
+  methods: {
+    postsIndex: function () {
+      console.log("posts index");
+      // posts web request
+      axios.get("/api/posts/").then((response) => {
+        console.log(response.data);
+        this.posts = response.data;
+      });
+    },
+  },
 };
 </script>
