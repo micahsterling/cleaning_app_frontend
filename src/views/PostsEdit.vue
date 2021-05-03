@@ -28,7 +28,7 @@
           </select>
         </div>
         <!-- Break -->
-        <div class="col-4 col-12-small">
+        <!-- <div class="col-4 col-12-small">
           <input type="radio" id="demo-priority-low" name="demo-priority" checked>
           <label for="demo-priority-low">Low</label>
         </div>
@@ -39,7 +39,7 @@
         <div class="col-4 col-12-small">
           <input type="radio" id="demo-priority-high" name="demo-priority">
           <label for="demo-priority-high">High</label>
-        </div>
+        </div> -->
 
         <div class="col-12">
           <label>Content:</label> 

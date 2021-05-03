@@ -58,14 +58,12 @@
 
     <section>
       <header class="major">
-        <h2>Cleaning Closet</h2>
+        <h2>Post Library </h2>
       </header>
       <div class="posts">
         <article v-if="post.user_id == $parent.getUserId()" v-for="post in posts">
           <a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
           <h3>{{post.title}}</h3>
-          <p>post.user_id: {{ post.user_id }}</p>
-					 <p>$parent.getUserId(): {{ $parent.getUserId() }}</p>
           <p>{{post.content}}</p>
           <p>Category: {{post.category && post.category.name}}</p>
             Tags: <a v-for="tag in post.tags"> {{tag.name}},</a>
@@ -73,6 +71,7 @@
           <p></p>
           <ul class="actions">
             <li ><a v-bind:href="`/posts/${post.id}/edit`" class="button">Edit</a></li>
+            <li ><a v-on:click="deletePost(post)" class="button">Delete</a></li>
           </ul>
         </article>
       </div>
@@ -110,11 +109,12 @@ export default {
         this.posts = response.data;
       });
     },
-    postShow: function (thePost) {
-      console.log("show");
-      console.log(thePost);
-      this.currentPost = thePost;
-      document.querySelector("#post-details").showModal();
+    deletePost: function (post) {
+      console.log("deleting post...");
+      axios.delete("/api/posts/" + post.id).then((response) => {
+        console.log(response.data);
+        this.$router.push("/myposts");
+      });
     },
     categoriesIndex: function () {
       console.log("category index");

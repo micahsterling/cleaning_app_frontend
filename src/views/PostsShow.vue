@@ -11,14 +11,11 @@
 					<p>Category: {{post.category && post.category.name}}</p>
 					Tags: <a v-for="tag in post.tags">  {{tag.name}},</a>
 					<p></p>
-					<p>post.user_id: {{ post.user_id }}</p>
-					 <p>$parent.getUserId(): {{ $parent.getUserId() }}</p>
 					<div v-if="post.user_id == $parent.getUserId()">
 						<ul class="actions">
 							<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
-							<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Delete </a></li>
+							<li><a v-on:click="deletepost()" class="button big">Delete </a></li>
 							<br />
-							<!-- <button v-on:click="deletepost()">Delete the post</button> -->
 						</ul>
 					</div>
 					<div v-if="post.user_id != $parent.getUserId()">
@@ -31,6 +28,11 @@
 					<img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
 				</span>
 			</section>
+				<div  v-for="product in post.products"  class="box alt">
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-4"><span class="image fit"><img v-bind:src="product.image" alt="" />	{{product.name}}</span></div>
+					</div>
+				</div>
 
 		<!-- Section -->
 			<!-- <section>
@@ -109,7 +111,7 @@ export default {
       category: [],
       tags: [],
       posts: [],
-      searchTerm: "",
+      products: [],
     };
   },
   created: function () {

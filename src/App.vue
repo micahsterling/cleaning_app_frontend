@@ -172,9 +172,6 @@ export default {
       // categories: [],
     };
   },
-  created: function () {
-    this.categoriesIndex();
-  },
   methods: {
     toggle: function () {
       this.active = !this.active;
