@@ -55,31 +55,31 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="/posts">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
+										<li><a href="/">Homepage</a></li>
+										<!-- <li><a href="generic.html">Generic</a></li>
+										<li><a href="elements.html">Elements</a></li> -->
 										<li><a href="#" >Kitchen</a></li>
 										<li><a href="#">Living Room</a></li>
 										<li><a href="#">Bedroom</a></li>
 										<li><a href="#">Bathroom</a></li>
 										<li><a href="#">Laundry</a></li>
 										<li v-if="isLoggedIn()"><a href="/posts/new" >New Post</a></li>
-										<li>
+										<!-- <li>
 											<span class="opener " v-on:click="active = !active" v-bind:class="{active: active}">Categories</span>
 											<ul>
-												<!-- <li><option v-for="category in categories" >{{category.name}}</option></li> -->
+
 												<li><a href="#" >Kitchen</a></li>
 												<li><a href="#">Living Room</a></li>
 												<li><a href="#">Bedroom</a></li>
 												<li><a href="#">Bathroom</a></li>
 												<li><a href="#">Laundry</a></li>
 											</ul>
-										</li>
+										</li> -->
 									</ul>
 								</nav>
 
 							<!-- Section -->
-								<section>
+								<!-- <section>
 									<header class="major">
 										<h2>Ante interdum</h2>
 									</header>
@@ -98,9 +98,9 @@
 										</article>
 									</div>
 									<ul class="actions">
-										<!-- <li><a href="#" class="button">More</a></li> -->
+										<li><a href="#" class="button">More</a></li>
 									</ul>
-								</section>
+								</section> -->
 
 							<!-- Section -->
 

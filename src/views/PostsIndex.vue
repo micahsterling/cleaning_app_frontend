@@ -3,19 +3,16 @@
       <!-- Banner -->
     <section id="banner">
       <div class="content">
-        <header>
+        <!-- <header>
           <h1>Cleaning app<br />
           </h1>
           <p>A place for all your cleaning info</p>
         </header>
-        <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-        <!-- <ul class="actions">
-          <li><a href="#" class="button big">Learn More</a></li>
-        </ul> -->
+        <p></p> --> 
       </div>
-      <span class="image object">
+      <!-- <span class="image object">
         <img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
-      </span>
+      </span> -->
     </section>
 
   <!-- Section -->
@@ -61,8 +58,9 @@
         <h2>Cleaning Closet</h2>
       </header>
       <div class="posts">
-        <article v-for="post in posts">
-          <a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
+        <article v-if="post.user_id != $parent.getUserId()" v-for="post in posts">
+          <a v-for="image in post.images" v-bind:href="`/posts/${post.id}`" class="image"><img v-bind:src="image.name" alt="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" /></a>
+          <a v-if="post.images.length == 0" v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
           <p>Category: {{post.category && post.category.name}}</p>
@@ -92,6 +90,7 @@ export default {
       categories: [],
       currentPost: {},
       tags: [],
+      images: [],
     };
   },
   created: function () {

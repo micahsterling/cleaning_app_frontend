@@ -62,7 +62,8 @@
       </header>
       <div class="posts">
         <article v-if="post.user_id == $parent.getUserId()" v-for="post in posts">
-          <a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
+          <a v-for="image in post.images" v-bind:href="`/posts/${post.id}`" class="image"><img v-bind:src="image.name" alt="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" /></a>
+          <a v-if="post.images.length == 0" v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
           <p>Category: {{post.category && post.category.name}}</p>

@@ -4,12 +4,25 @@
     <div v-if="!isLoggedIn()">
       <h3>Login to make a post</h3>
       <!-- <p>User id: {{getUserId()}}</p>
-      <p>User name: {{getUserName()}}</p> -->
-      
-      <p>{{ posts.title }}</p>
-
-  </div>
+      <p>User name: {{getUserName()}}</p> -->      
     </div>
+          <!-- Banner -->
+    <section id="banner">
+      <div class="content">
+        <header>
+          <h2>A place for all your cleaning info</h2>
+        </header>
+        <p>The cleaning place is your go to destination for all cleaning related info. Need to know how to clean your toilet? We've got that information! Need to know what products to use on a cast iron pan? Let us help you. Check out the cleaning closet to browse posts by other users sharing their own best tips and tricks. See something you like? Add it to your collection! </p> 
+        <!-- <ul class="actions">
+          <li><a href="#" class="button big">Learn More</a></li>
+        </ul> -->
+      </div>
+      <span class="image object">
+        <img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
+      </span>
+    </section>
+    <p>{{ posts.title }}</p>
+  </div>
 </template>
 
 <style>

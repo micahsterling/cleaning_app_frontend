@@ -22,8 +22,8 @@
         <br /> 
         <!-- Break -->
         <div class="col-12">
-            <option  value=""> Category </option>
-          <select v-model="post.category_id" name="demo-category" id="demo-category">
+            Category 
+          <select v-model="post.category.id" name="demo-category" id="demo-category">
             <option v-for="category in categories" v-bind:value="category.id">{{category.name}}</option>
           </select>
         </div>
@@ -75,6 +75,7 @@ export default {
       errors: [],
       categories: [],
       tags: [],
+      tag_strings: [],
     };
   },
   created: function () {
@@ -91,7 +92,8 @@ export default {
     axios.get(`/api/tags/`).then((response) => {
       console.log("tags");
       console.log(response.data);
-      this.tags = response.data;
+      this.tagsObjects = response.data;
+      this.tags = response.data.map((tag) => tag.name);
     });
   },
   methods: {

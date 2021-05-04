@@ -8,6 +8,7 @@
 						<h2>{{post.title}}</h2>
 					</header>
 					<p>{{post.content}}</p>
+					<p>{{post.user_id}}</p>
 					<p>Category: {{post.category && post.category.name}}</p>
 					Tags: <a v-for="tag in post.tags">  {{tag.name}},</a>
 					<p></p>
@@ -24,9 +25,8 @@
 						</ul>
 					</div>
 				</div>
-				<span class="image object">
-					<img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
-				</span>
+					<a v-for="image in post.images" v-bind:href="`/posts/${post.id}`" class="image"><img v-bind:src="image.name" alt="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" /></a>
+					<a v-if="post.images.length == 0" v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
 			</section>
 				<header class="major">
 					<h2>Recomended Products</h2>
@@ -81,7 +81,8 @@
 				</header>
 				<div class="posts">
 						<article v-for="post in filterBy(posts, post.category.name, 'category')">
-						<a v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
+						<a v-for="image in post.images" v-bind:href="`/posts/${post.id}`" class="image"><img v-bind:src="image.name" alt="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" /></a>
+						<a v-if="post.images.length == 0" v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
 						<h3>{{post.title}}</h3>
 						<p>{{post.content}}</p>
 						<p>Category: {{post.category && post.category.name}}</p>
