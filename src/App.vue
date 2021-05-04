@@ -12,10 +12,10 @@
 									<!-- <div class="col-3 col-6-small">
 										
 									</div> -->
-									<a href="/posts" class="logo"><strong>Homepage</strong> </a>
-									<a href="index.html" class="logo"><strong>Make it Clean</strong> </a>
+									<a href="/" class="logo"><strong>Homepage</strong> </a>
+									<a href="/posts" class="logo"><strong>Cleaning Closet </strong> </a>
 									<a href="index.html" class="logo"><strong>My Collection</strong> </a>
-									<a href="/myposts" class="logo"><strong>My Posts</strong> </a>
+									<a href="/myposts" class="logo" v-if="isLoggedIn()"><strong>My Posts</strong> </a>
 									
 								
 								
@@ -24,8 +24,6 @@
 										<li v-if="!isLoggedIn()"><a href="/signup" class=""><span class="label">Signup</span></a></li>
 										<li v-if="!isLoggedIn()"><a href="/login" class=""><span class="label">Login</span></a></li>
 										<li v-if="isLoggedIn()"><a href="/logout" class=""><span class="label">Logout</span></a></li>
-										<!-- <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
 									</ul>
 
 								</header>
@@ -60,6 +58,12 @@
 										<li><a href="/posts">Homepage</a></li>
 										<li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li>
+										<li><a href="#" >Kitchen</a></li>
+										<li><a href="#">Living Room</a></li>
+										<li><a href="#">Bedroom</a></li>
+										<li><a href="#">Bathroom</a></li>
+										<li><a href="#">Laundry</a></li>
+										<li v-if="isLoggedIn()"><a href="/posts/new" >New Post</a></li>
 										<li>
 											<span class="opener " v-on:click="active = !active" v-bind:class="{active: active}">Categories</span>
 											<ul>
@@ -71,20 +75,6 @@
 												<li><a href="#">Laundry</a></li>
 											</ul>
 										</li>
-										<li><a href="/posts/new">New Post</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
 									</ul>
 								</nav>
 
@@ -108,27 +98,16 @@
 										</article>
 									</div>
 									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
+										<!-- <li><a href="#" class="button">More</a></li> -->
 									</ul>
 								</section>
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
+
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a><a href=""></a>.</p>
 								</footer>
 
 						</div>

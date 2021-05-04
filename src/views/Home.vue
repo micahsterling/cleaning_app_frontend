@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <div v-if="isLoggedIn()">
-      <p>User id: {{getUserId()}}</p>
-      <p>User name: {{getUserName()}}</p>
+    <h1>{{ message }} {{getUserName()}}</h1>
+    <div v-if="!isLoggedIn()">
+      <h3>Login to make a post</h3>
+      <!-- <p>User id: {{getUserId()}}</p>
+      <p>User name: {{getUserName()}}</p> -->
+      
       <p>{{ posts.title }}</p>
 
   </div>
@@ -14,14 +16,18 @@
 </style>
 
 <script>
+import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "The Home Page!",
+      message: "Welcome to The Cleaning Place",
       posts: [],
     };
   },
-  created: function () {},
+  created: function () {
+    console.log("creating");
+    this.postsIndex();
+  },
   methods: {
     isLoggedIn: function () {
       console.log("is logged in");

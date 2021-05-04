@@ -11,23 +11,26 @@
 					<p>Category: {{post.category && post.category.name}}</p>
 					Tags: <a v-for="tag in post.tags">  {{tag.name}},</a>
 					<p></p>
-					<div v-if="post.user_id == $parent.getUserId()">
+					<div v-if="post.user_id != $parent.getUserId()">
+						<ul class="actions"> 
+							<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
+						</ul>
+					</div>
+					<div v-else="post.user_id == $parent.getUserId()">
 						<ul class="actions">
 							<li><a v-bind:href="`/posts/${post.id}/edit`" class="button big">Edit</a></li>
 							<li><a v-on:click="deletepost()" class="button big">Delete </a></li>
 							<br />
 						</ul>
 					</div>
-					<div v-if="post.user_id != $parent.getUserId()">
-					<ul class="actions"> 
-						<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
-					</ul>
-					</div>
 				</div>
 				<span class="image object">
 					<img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
 				</span>
 			</section>
+				<header class="major">
+					<h2>Recomended Products</h2>
+				</header>
 				<div  v-for="product in post.products"  class="box alt">
 					<div class="row gtr-50 gtr-uniform">
 						<div class="col-4"><span class="image fit"><img v-bind:src="product.image" alt="" />	{{product.name}}</span></div>
