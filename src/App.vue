@@ -40,14 +40,14 @@
 						<div class="inner">
 
 							<!-- Search -->
-								<section id="search" class="alt">
+								<!-- <section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" v-model="search" placeholder="Search" />
 										<div v-for="post in filteredPosts">
 
 										</div>
 									</form>
-								</section>
+								</section> -->
 
 							<!-- Menu -->
 								<nav id="menu">
@@ -55,14 +55,17 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="/">Homepage</a></li>
+										<!-- <li><a href="/">Homepage</a></li> -->
 										<!-- <li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li> -->
-										<li><a href="#" >Kitchen</a></li>
-										<li><a href="#">Living Room</a></li>
-										<li><a href="#">Bedroom</a></li>
-										<li><a href="#">Bathroom</a></li>
-										<li><a href="#">Laundry</a></li>
+
+										<!-- <li v-for="category in Categories"></li> -->
+										<li><a href="/kitchen" >Kitchen</a></li>
+										<li><a href="/category" >Living Room</a></li>
+										<li><a href="/category" >Bedroom</a></li>
+										<li><a href="/category" >Bathroom</a></li>
+										<li><a href="/category" >Laundry</a></li>
+										
 										<li v-if="isLoggedIn()"><a href="/posts/new" >New Post</a></li>
 										<!-- <li>
 											<span class="opener " v-on:click="active = !active" v-bind:class="{active: active}">Categories</span>
@@ -148,7 +151,7 @@ export default {
       search: "",
       active: false,
       inactive: false,
-      // categories: [],
+      categories: [],
     };
   },
   methods: {

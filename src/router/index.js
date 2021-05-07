@@ -9,6 +9,7 @@ import PostsEdit from '../views/PostsEdit.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
+import Kitchen from '../views/Kitchen.vue'
 
 Vue.use(VueRouter)
 
@@ -47,6 +48,11 @@ const routes = [
     path: '/posts/new',
     name: 'PostsNew',
     component: PostsNew
+  },
+  {
+    path: '/kitchen',
+    name: 'Kitchen',
+    component: Kitchen
   },
   {
     path: '/posts/:id/edit',

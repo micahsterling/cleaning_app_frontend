@@ -8,10 +8,11 @@
 						<h2>{{post.title}}</h2>
 					</header>
 					<p>{{post.content}}</p>
-					<p>{{post.user_id}}</p>
+					<!-- <p>{{post.user_id}}</p> -->
 					<p>Category: {{post.category && post.category.name}}</p>
 					Tags: <a v-for="tag in post.tags">  {{tag.name}},</a>
 					<p></p>
+					Votes: <p>{{post.votes}}</p>
 					<div v-if="post.user_id != $parent.getUserId()">
 						<ul class="actions"> 
 							<li><a href="#" class="button big">Votes {{post.votes}}</a></li>
@@ -89,6 +90,7 @@
 							Tags: <a v-for="tag in post.tags"> {{tag.name}},</a>
 							
 						<p></p>
+						Votes: <p>{{post.votes}}</p>
 						<ul class="actions">
 							<li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
 						</ul>

@@ -3,19 +3,16 @@
       <!-- Banner -->
     <section id="banner">
       <div class="content">
-        <header>
-          <h1>My Posts<br />
+        <!-- <header>
+          <h1>Cleaning app<br />
           </h1>
-          <p>A place for all your posts</p>
+          <p>A place for all your cleaning info</p>
         </header>
-        <p></p>
-        <ul class="actions">
-          <li><a href="/posts/new" class="button big">New Post</a></li>
-        </ul>
+        <p></p> --> 
       </div>
-      <span class="image object">
+      <!-- <span class="image object">
         <img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
-      </span>
+      </span> -->
     </section>
 
   <!-- Section -->
@@ -55,29 +52,27 @@
       </div>
     </section> -->
   <!-- Section -->
-
-    <section>
-      <header class="major">
-        <h2>Post Library </h2>
-      </header>
-      <div class="posts">
-        <article v-if="post.user_id == $parent.getUserId()" v-for="post in posts">
-          <a v-for="image in post.images" v-bind:href="`/posts/${post.id}`" class="image"><img v-bind:src="image.name" alt="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" /></a>
-          <a v-if="post.images.length == 0" v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
-          <h3>{{post.title}}</h3>
-          <p>{{post.content}}</p>
-          <p>Category: {{post.category && post.category.name}}</p>
-            Tags: <a v-for="tag in post.tags"> {{tag.name}},</a>
-            
-          <p></p>
-          Votes: <p>{{post.votes}}</p>
-          <ul class="actions">
-            <li ><a v-bind:href="`/posts/${post.id}/edit`" class="button">Edit</a></li>
-            <li ><a v-on:click="deletePost(post)" class="button">Delete</a></li>
-          </ul>
-        </article>
-      </div>
-    </section>
+       <p>Search By Category: <input type="text" v-model="searchTerm"></p>
+			<section>
+				<header class="major">
+					<h2>Posts By Category</h2>
+				</header>
+				<div class="posts">
+						<article v-for="post in filterBy(posts, searchTerm, 'category')">
+						<a v-for="image in post.images" v-bind:href="`/posts/${post.id}`" class="image"><img v-bind:src="image.name" alt="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" /></a>
+						<a v-if="post.images.length == 0" v-bind:href="`/posts/${post.id}`" class="image"><img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" /></a>
+						<h3>{{post.title}}</h3>
+						<p>{{post.content}}</p>
+						<p>Category: {{post.category && post.category.name}}</p>
+							Tags: <a v-for="tag in post.tags"> {{tag.name}},</a>
+							
+						<p></p>
+						<ul class="actions">
+							<li ><a v-bind:href="`/posts/${post.id}`" class="button">More</a></li>
+						</ul>
+					</article>
+      	</div>
+			</section>
 
   </div>
 </template>
@@ -87,14 +82,18 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       message: "Welcome to Posts!",
       posts: [],
-      categories: [],
+      category: [],
       currentPost: {},
       tags: [],
+      images: [],
+      searchTerm: "",
     };
   },
   created: function () {
@@ -111,12 +110,11 @@ export default {
         this.posts = response.data;
       });
     },
-    deletePost: function (post) {
-      console.log("deleting post...");
-      axios.delete("/api/posts/" + post.id).then((response) => {
-        console.log(response.data);
-        this.$router.push("/myposts");
-      });
+    postShow: function (thePost) {
+      console.log("show");
+      console.log(thePost);
+      this.currentPost = thePost;
+      document.querySelector("#post-details").showModal();
     },
     categoriesIndex: function () {
       console.log("category index");

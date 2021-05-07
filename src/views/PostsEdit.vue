@@ -101,7 +101,7 @@ export default {
       var params = {
         title: this.post.title,
         content: this.post.content,
-        category_id: this.post.category_id,
+        category_id: this.post.category.id,
       };
       axios
         .patch(`/api/posts/${this.$route.params.id}`, params)
