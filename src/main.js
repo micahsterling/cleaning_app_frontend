@@ -8,7 +8,7 @@ Vue.use(MultiSelectPlugin);
 
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
-axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "https://busy-beaver-5eb6ac.netlify.app/" : "/";
+axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "https://cleaningplace.netlify.app/" : "/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
