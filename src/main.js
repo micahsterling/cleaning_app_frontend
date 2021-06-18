@@ -7,7 +7,7 @@ import { MultiSelectPlugin } from '@syncfusion/ej2-vue-dropdowns';
 Vue.use(MultiSelectPlugin);
 
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
-axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://cleaningplace.netlify.app/";
+axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://cleaningplace.netlify.app";
 // axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "https://cleaningplace.netlify.app/" : "/";
 
 var jwt = localStorage.getItem("jwt");
