@@ -1,23 +1,5 @@
 <template>
   <div class="post-new">
-      <!-- Banner -->
-    <!-- <section id="banner">
-      <div class="content">
-        <header>
-          <h1>Cleaning app<br />
-          </h1>
-          <p>A place for all your cleaning info</p>
-        </header>
-        <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
-        <ul class="actions">
-          <li><a href="#" class="button big">Learn More</a></li>
-        </ul>
-      </div>
-      <span class="image object">
-        <img src="https://andchristina.com/wp-content/uploads/2020/08/cleaning-caddy-1024x757.jpg" alt="" />
-      </span>
-    </section> -->
-
   <!-- Section -->
     <!-- <section>
       <header class="major">
@@ -28,27 +10,6 @@
           <span class="icon fa-gem"></span>
           <div class="content">
             <h3>Portitor ullamcorper</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-          </div>
-        </article>
-        <article>
-          <span class="icon solid fa-paper-plane"></span>
-          <div class="content">
-            <h3>Sapien veroeros</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-          </div>
-        </article>
-        <article>
-          <span class="icon solid fa-rocket"></span>
-          <div class="content">
-            <h3>Quam lorem ipsum</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-          </div>
-        </article>
-        <article>
-          <span class="icon solid fa-signal"></span>
-          <div class="content">
-            <h3>Sed magna finibus</h3>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
           </div>
         </article>
@@ -90,23 +51,6 @@
           <input type="radio" id="demo-priority-low" name="demo-priority" checked>
           <label for="demo-priority-low">Low</label>
         </div>
-        <div class="col-4 col-12-small">
-          <input type="radio" id="demo-priority-normal" name="demo-priority">
-          <label for="demo-priority-normal">Normal</label>
-        </div>
-        <div class="col-4 col-12-small">
-          <input type="radio" id="demo-priority-high" name="demo-priority">
-          <label for="demo-priority-high">High</label>
-        </div> -->
-        <!-- Break -->
-        <!-- <div class="col-6 col-12-small">
-          <input type="checkbox" id="demo-copy" name="demo-copy">
-          <label for="demo-copy">Email me a copy</label>
-        </div>
-        <div class="col-6 col-12-small">
-          <input type="checkbox" id="demo-human" name="demo-human" checked>
-          <label for="demo-human">I am a human</label>
-        </div> -->
         <!-- Break -->
         <div class="col-12">
           <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6" v-model="content"></textarea>
@@ -121,8 +65,7 @@
       </div>
     </form>
   </div>
-</template>
-    
+</template>   
 
 <style>
 </style>
@@ -167,8 +110,9 @@ export default {
         tag_ids: this.tagsObjects.filter(
           (tag) => this.tag_strings.indexOf(tag.name) >= 0
         ),
+        user_id: parseInt(localStorage.getItem("user_id"))
       };
-      console.log(params);
+      console.log('parmas',params);
       // make a request to the api
       axios
         .post("/api/posts", params)
